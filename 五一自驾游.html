@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+   <meta charset="utf-8">
+   <meta name="keywords" content="高德地图,DIY地图,高德地图生成器">
+   <meta name="description" content="高德地图，DIY地图，自己制作地图，生成自己的高德地图">
+   <title>高德地图 - DIY我的地图</title>
+   <style>
+     body { margin: 0; font: 13px/1.5 "Microsoft YaHei", "Helvetica Neue", "Sans-Serif"; min-height: 960px; min-width: 600px; }
+     .my-map { margin: 0 auto; width: 800px; height: 640px; } .my-map .icon { background: url(//a.amap.com/lbs-dev-yuntu/static/web/image/tools/creater/marker.png) no-repeat; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-anc { height: 28px; width: 26px; } .my-map .icon-anc-blue { background-position: -132px -55px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-yellow { background-position: -11px -105px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-yellow { background-position: -11px -105px; } .my-map .icon-anc { height: 28px; width: 26px; } .my-map .icon-anc-blue { background-position: -132px -55px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-yellow { background-position: -11px -105px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-yellow { background-position: -11px -105px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-yellow { background-position: -11px -105px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-yellow { background-position: -11px -105px; } .my-map .icon-cir { height: 31px; width: 28px; } .my-map .icon-cir-red { background-position: -11px -5px; } .my-map .icon-flg { height: 32px; width: 29px; } .my-map .icon-flg-green { background-position: -65px -155px; } .my-map .icon-flg { height: 32px; width: 29px; } .my-map .icon-flg-green { background-position: -65px -155px; } .my-map .icon-anc { height: 28px; width: 26px; } .my-map .icon-anc-blue { background-position: -132px -55px; }
+     .amap-container{height: 100%;}
+     .myinfowindow{width: 240px;min-height: 50px;}
+     .myinfowindow h5{ height: 20px; line-height: 20px; overflow: hidden; font-size: 14px; font-weight: bold; width: 220px; text-overflow: ellipsis; word-break: break-all; white-space: nowrap; }
+     .myinfowindow div{ margin-top: 10px; min-height: 40px; line-height: 20px; font-size: 13px; color: #6f6f6f; }
+   </style>
+ </head>
+ <body>
+   <div id="wrap" class="my-map">
+     <div id="mapContainer"></div>
+   </div>
+   <script src="//webapi.amap.com/maps?v=1.3&key=e07ffdf58c8e8672037bef0d6cae7d4a"></script>
+   <script>
+   !function(){
+     var infoWindow, map, level = 17,
+       center = {lng: 113.089459, lat: 22.575446},
+       features = [{"icon":"cir","color":"red","name":"牛肉火锅","desc":"蓬江区五洞","lnglat":{"Q":22.752844999042118,"R":113.04222914770241,"lng":113.042229,"lat":22.752845},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"田心牛场餐厅","desc":"新会区双水镇","lnglat":{"Q":22.408926914770117,"R":112.96846849367023,"lng":112.968468,"lat":22.408927},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"旺记牛餐厅","desc":"新会区","lnglat":{"Q":22.45331616905555,"R":113.07541558206083,"lng":113.075416,"lat":22.453316},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"黄鳝饭（第一家兴华总店）","desc":"台山","lnglat":{"Q":22.314936447523536,"R":112.7918240390718,"lng":112.791824,"lat":22.314936},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"anc","color":"blue","name":"台山历史文化街区","desc":"台山","lnglat":{"Q":22.25018021125219,"R":112.79671441555024,"lng":112.796714,"lat":22.25018},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"yellow","name":"永叔小食店","desc":"蓬江区","lnglat":{"Q":22.57596018800087,"R":113.08017912223937,"lng":113.080179,"lat":22.57596},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"yellow","name":"喜茶","desc":"江边里创始店","lnglat":{"Q":22.585648556746378,"R":113.09483030140399,"lng":113.09483,"lat":22.585649},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"anc","color":"blue","name":"梅家大院","desc":"台山","lnglat":{"Q":22.0414892218386,"R":112.74726249709727,"lng":112.747262,"lat":22.041489},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"恒益烧腊","desc":"蓬江区","lnglat":{"Q":22.59933304787222,"R":113.10746376201507,"lng":113.107464,"lat":22.599333},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"鸿门饭店","desc":"蓬江区","lnglat":{"Q":22.57327099792366,"R":113.08571285337212,"lng":113.085713,"lat":22.573271},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"狗仔鹅","desc":"总店（猜的，高德地图上没写）","lnglat":{"Q":22.376725983118583,"R":112.68819291204215,"lng":112.688193,"lat":22.376726},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"狗仔鹅","desc":"都会城店（新会区）","lnglat":{"Q":22.535450361865326,"R":113.05211866691707,"lng":113.052119,"lat":22.53545},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"yellow","name":"绿洲","desc":"东华大厦店","lnglat":{"Q":22.59501743027902,"R":113.09687439680101,"lng":113.096874,"lat":22.595017},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"yellow","name":"绿洲","desc":"江海店","lnglat":{"Q":22.57089474341853,"R":113.10194158986212,"lng":113.101942,"lat":22.570895},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"yellow","name":"绿洲","desc":"双龙店","lnglat":{"Q":22.601055001140704,"R":113.06466650605199,"lng":113.064667,"lat":22.601055},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"yellow","name":"绿洲","desc":"江侨店","lnglat":{"Q":22.62943104892223,"R":113.07734785616395,"lng":113.077348,"lat":22.629431},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"cir","color":"red","name":"绿洲","desc":"新会中心南店","lnglat":{"Q":22.51530516700124,"R":113.0415680448711,"lng":113.041568,"lat":22.515305},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"flg","color":"green","name":"白水带风景区","desc":"江海区","lnglat":{"Q":22.586149378607654,"R":113.12371234282853,"lng":113.123712,"lat":22.586149},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"flg","color":"green","name":"圭峰山风景名胜区","desc":"新会区","lnglat":{"Q":22.559595922603442,"R":113.03021102339028,"lng":113.030211,"lat":22.559596},"offset":{"x":-9,"y":-31},"type":"Marker"}, {"icon":"anc","color":"blue","name":"三十三墟街","desc":"蓬江区","lnglat":{"Q":22.578056766624176,"R":113.09137067422273,"lng":113.091371,"lat":22.578057},"offset":{"x":-9,"y":-31},"type":"Marker"}];
+
+     function loadFeatures(){
+       for(var feature, data, i = 0, len = features.length, j, jl, path; i < len; i++){
+         data = features[i];
+         switch(data.type){
+           case "Marker":
+             feature = new AMap.Marker({ map: map, position: new AMap.LngLat(data.lnglat.lng, data.lnglat.lat),
+               zIndex: 3, extData: data, offset: new AMap.Pixel(data.offset.x, data.offset.y), title: data.name,
+               content: '<div class="icon icon-' + data.icon + ' icon-'+ data.icon +'-' + data.color +'"></div>' });
+             break;
+           case "Polyline":
+            for(j = 0, jl = data.path.length, path = []; j < jl; j++){
+							path.push(new AMap.LngLat(data.path[j].lng, data.path[j].lat));
+						}
+             feature = new AMap.Polyline({ map: map, path: path, extData: data, zIndex: 2,
+               strokeWeight: data.strokeWeight, strokeColor: data.strokeColor, strokeOpacity: data.strokeOpacity });
+             break;
+           case "Polygon":
+             for(j = 0, jl = data.path.length, path = []; j < jl; j++){
+               path.push(new AMap.LngLat(data.path[j].lng, data.path[j].lat));
+             }
+             feature = new AMap.Polygon({ map: map, path: path, extData: data, zIndex: 1,
+               strokeWeight: data.strokeWeight, strokeColor: data.strokeColor, strokeOpacity: data.strokeOpacity,
+               fillColor: data.fillColor, fillOpacity: data.fillOpacity });
+             break;
+           default: feature = null;
+         }
+         if(feature){ AMap.event.addListener(feature, "click", mapFeatureClick); }
+       }
+     }
+
+     function mapFeatureClick(e){
+       if(!infoWindow){ infoWindow = new AMap.InfoWindow({autoMove: true,isCustom: false}); }
+       var extData = e.target.getExtData();
+       infoWindow.setContent("<div class='myinfowindow'><h5>" + extData.name + "</h5><div>" + extData.desc + "</div></div>");
+       infoWindow.open(map, e.lnglat);
+     }
+
+     map = new AMap.Map("mapContainer", {center: new AMap.LngLat(center.lng, center.lat), level: level, keyboardEnable:true, dragEnable:true, scrollWheel:true, doubleClickZoom:true});
+
+     loadFeatures();
+
+     map.on('complete', function(){
+       map.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function(){
+         map.addControl(new AMap.ToolBar({ruler: true, direction: true, locate: false})); map.addControl(new AMap.OverView({isOpen: true})); map.addControl(new AMap.Scale);
+       });
+     })
+
+ 	}();
+   </script>
+ </body>
+ </html>
